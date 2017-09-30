@@ -6,8 +6,8 @@ const should = chai.should();
 
 describe('The GitHub API', () => {
   it('allows me to get a list of repos', (done) => {
-    const organization = 'microsoft';
-    const url = `https://api.github.com/org/${organization}/repos?page=1&per_page=100`;
+    const owner = 'Microsoft';
+    const url = `https://api.github.com/orgs/${owner}/repos`;
     request
       .get(url)
       .auth(username, token)
