@@ -1,20 +1,38 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const PORT = 3000;
+
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+/* Used when receiving a get request. Reads the file and gives it back
+   to the service asking for it */
 app.get('/data', (req, res) => {
-  console.log('Get Data');
-  res.send('Hello World');
+  fs.readFile('data.txt', (err, data) => {
+    if (err) throw err;
+    res.send(JSON.parse(data));
+  });
 });
 
+// TODO Must have application/json as a Content-Type header
+/* Used when getting a post request from the module updating the data.
+*  Saves the content into a file for later use */
 app.post('/data', (req, res) => {
-  console.log('Post Data');
-  console.log(req.body);
-  res.send(req.body.entreprise);
+  fs.writeFile('data.txt', JSON.stringify(req.body), (err) => {
+    // If there is an error reading the file, return the error code
+    if (err) {
+      res.sendStatus(500);
+    }
+
+    // Otherwise send the response code corresponding
+    res.sendStatus(200);
+    console.log('Successfully saved');
+  });
 });
 
-app.listen(3000);
+// Listening port for the app
+app.listen(PORT);
