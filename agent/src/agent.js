@@ -32,14 +32,19 @@ class Agent {
     fetchAndProcessPage(targetUrl, this.credentials);
   }
 
-  /* TODO asynch ou pas? Faut que je voie encore avec Liechti...
-  postTheData(data, url, dataArePosted) {
-    console.log('Posting data to the server');
+  postTheData(data, url) {
     request
       .post(url)
-      .data(data);
-    dataArePosted();
-  } */
+      .send(data)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.log('An error occured');
+        }
+        else {
+          console.log('Data send to the server');
+        }
+      });
+  }
 }
 
 module.exports = Agent;
