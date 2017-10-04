@@ -8,7 +8,10 @@ const app = express();
 // No worries with X references
 app.use(cors());
 
-const PORT = process.env.PORT;
+// TODO to deploy on heroku, uncomment this line
+// const SERVER_PORT = process.env.PORT;
+
+const SERVER_PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -39,4 +42,4 @@ app.post('/data', (req, res) => {
 });
 
 // Listening port for the app
-app.listen(PORT);
+app.listen(SERVER_PORT);
