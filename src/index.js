@@ -8,7 +8,7 @@ const app = express();
 // No worries with X references
 app.use(cors());
 
-const PORT = 3000;
+//const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
