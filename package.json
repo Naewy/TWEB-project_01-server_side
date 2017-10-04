@@ -4,12 +4,14 @@
   "description": "Server to get info from git and return to the client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	 "start": "node src/index.js"
   },
   "author": "Chatelan & Chauffoureaux",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.0"
   },
   "devDependencies": {
