@@ -9,9 +9,7 @@ const app = express();
 app.use(cors());
 
 // TODO to deploy on heroku, uncomment this line
-// const SERVER_PORT = process.env.PORT;
-
-const SERVER_PORT = 3000;
+const SERVER_PORT = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
